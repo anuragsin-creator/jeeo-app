@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEE + Boards Prep App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Navigation Sidebar -->
+        <div class="sidebar">
+            <div class="logo">JEE+Boards Prep</div>
+            <ul class="nav-links">
+                <li class="active" data-section="home"><i class="fas fa-home"></i> Home</li>
+                <li data-section="materials"><i class="fas fa-book"></i> Materials</li>
+                <li data-section="stopwatch"><i class="fas fa-stopwatch"></i> Stopwatch</li>
+                <li data-section="todo"><i class="fas fa-tasks"></i> To-Do List</li>
+                <li data-section="community"><i class="fas fa-users"></i> Community</li>
+            </ul>
+            <div class="user-profile">
+                <img src="https://via.placeholder.com/40" alt="Profile">
+                <span>Student</span>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <!-- Home Section -->
+            <section id="home" class="content-section active">
+                <h1><i class="fas fa-home"></i> Dashboard</h1>
+                
+                <!-- Weekly Targets -->
+                <div class="card">
+                    <h2><i class="fas fa-bullseye"></i> Weekly Targets</h2>
+                    <div class="progress-container">
+                        <div class="progress-bar" style="width: 65%"></div>
+                    </div>
+                    <p>65% of weekly targets completed</p>
+                    <div class="target-subjects">
+                        <div class="target-subject physics">
+                            <h3>Physics</h3>
+                            <div class="progress-container small">
+                                <div class="progress-bar" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        <div class="target-subject chemistry">
+                            <h3>Chemistry</h3>
+                            <div class="progress-container small">
+                                <div class="progress-bar" style="width: 60%"></div>
+                            </div>
+                        </div>
+                        <div class="target-subject math">
+                            <h3>Mathematics</h3>
+                            <div class="progress-container small">
+                                <div class="progress-bar" style="width: 65%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Performance Graph -->
+                <div class="card">
+                    <h2><i class="fas fa-chart-line"></i> Performance</h2>
+                    <canvas id="performanceChart" height="200"></canvas>
+                </div>
+                
+                <!-- Recent Activity -->
+                <div class="card">
+                    <h2><i class="fas fa-history"></i> Recent Activity</h2>
+                    <ul class="activity-list">
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>Completed Electrochemistry practice test</span>
+                            <span class="time">2 hours ago</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-book"></i>
+                            <span>Studied Rotational Motion chapter</span>
+                            <span class="time">5 hours ago</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-file-alt"></i>
+                            <span>Uploaded Integration notes</span>
+                            <span class="time">Yesterday</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Subject Blocks -->
+                <div class="subject-blocks">
+                    <div class="subject-block physics-block">
+                        <h2><i class="fas fa-atom"></i> Physics</h2>
+                        <div class="chapter-progress">
+                            <h3>Chapter Progress</h3>
+                            <ul>
+                                <li>Mechanics <span class="progress-percent">75%</span></li>
+                                <li>Electrodynamics <span class="progress-percent">60%</span></li>
+                                <li>Thermodynamics <span class="progress-percent">45%</span></li>
+                            </ul>
+                        </div>
+                        <button class="btn red-btn"><i class="fas fa-download"></i> Download Materials</button>
+                        <button class="btn red-btn"><i class="fas fa-file-alt"></i> Chapter Tests</button>
+                    </div>
+                    
+                    <div class="subject-block chemistry-block">
+                        <h2><i class="fas fa-flask"></i> Chemistry</h2>
+                        <div class="chapter-progress">
+                            <h3>Chapter Progress</h3>
+                            <ul>
+                                <li>Organic Chemistry <span class="progress-percent">80%</span></li>
+                                <li>Inorganic Chemistry <span class="progress-percent">55%</span></li>
+                                <li>Physical Chemistry <span class="progress-percent">65%</span></li>
+                            </ul>
+                        </div>
+                        <button class="btn red-btn"><i class="fas fa-download"></i> Download Materials</button>
+                        <button class="btn red-btn"><i class="fas fa-file-alt"></i> Chapter Tests</button>
+                    </div>
+                    
+                    <div class="subject-block math-block">
+                        <h2><i class="fas fa-square-root-alt"></i> Mathematics</h2>
+                        <div class="chapter-progress">
+                            <h3>Chapter Progress</h3>
+                            <ul>
+                                <li>Calculus <span class="progress-percent">70%</span></li>
+                                <li>Algebra <span class="progress-percent">50%</span></li>
+                                <li>Coordinate Geometry <span class="progress-percent">40%</span></li>
+                            </ul>
+                        </div>
+                        <button class="btn red-btn"><i class="fas fa-download"></i> Download Materials</button>
+                        <button class="btn red-btn"><i class="fas fa-file-alt"></i> Chapter Tests</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Materials Section -->
+            <section id="materials" class="content-section">
+                <h1><i class="fas fa-book"></i> Study Materials</h1>
+                
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="physics">Physics</button>
+                    <button class="tab-btn" data-tab="chemistry">Chemistry</button>
+                    <button class="tab-btn" data-tab="math">Mathematics</button>
+                </div>
+                
+                <div class="tab-content active" id="physics-tab">
+                    <div class="upload-section">
+                        <h2><i class="fas fa-upload"></i> Upload Physics Materials</h2>
+                        <div class="upload-box">
+                            <input type="file" id="physics-upload" multiple>
+                            <label for="physics-upload" class="btn red-btn">
+                                <i class="fas fa-cloud-upload-alt"></i> Choose Files
+                            </label>
+                            <button class="btn red-btn" id="physics-upload-btn">Upload</button>
+                        </div>
+                    </div>
+                    
+                    <div class="materials-list">
+                        <h2><i class="fas fa-folder"></i> Your Physics Materials</h2>
+                        <div class="file-item">
+                            <i class="fas fa-file-pdf"></i>
+                            <span>Electrodynamics Notes.pdf</span>
+                            <button class="btn small-btn"><i class="fas fa-download"></i></button>
+                            <button class="btn small-btn"><i class="fas fa-trash"></i></button>
+                        </div>
+                        <div class="file-item">
+                            <i class="fas fa-file-image"></i>
+                            <span>Mechanics Mind Map.png</span>
+                            <button class="btn small-btn"><i class="fas fa-download"></i></button>
+                            <button class="btn small-btn"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="chemistry-tab">
+                    <!-- Similar structure as physics tab -->
+                </div>
+                
+                <div class="tab-content" id="math-tab">
+                    <!-- Similar structure as physics tab -->
+                </div>
+            </section>
+
+            <!-- Stopwatch Section -->
+            <section id="stopwatch" class="content-section">
+                <h1><i class="fas fa-stopwatch"></i> Study Stopwatch</h1>
+                
+                <div class="stopwatch-container">
+                    <div class="stopwatch-display">00:00:00</div>
+                    <div class="stopwatch-controls">
+                        <button class="btn red-btn" id="start-stopwatch"><i class="fas fa-play"></i> Start</button>
+                        <button class="btn red-btn" id="pause-stopwatch" disabled><i class="fas fa-pause"></i> Pause</button>
+                        <button class="btn red-btn" id="reset-stopwatch"><i class="fas fa-redo"></i> Reset</button>
+                    </div>
+                    <div class="stopwatch-laps" id="lap-times"></div>
+                </div>
+            </section>
+
+            <!-- To-Do List Section -->
+            <section id="todo" class="content-section">
+                <h1><i class="fas fa-tasks"></i> Study Planner</h1>
+                
+                <div class="todo-input">
+                    <input type="text" id="new-task" placeholder="Add a new task...">
+                    <select id="task-subject">
+                        <option value="physics">Physics</option>
+                        <option value="chemistry">Chemistry</option>
+                        <option value="math">Mathematics</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <button class="btn red-btn" id="add-task"><i class="fas fa-plus"></i> Add</button>
+                </div>
+                
+                <div class="todo-lists">
+                    <div class="todo-list physics-tasks">
+                        <h2><i class="fas fa-atom"></i> Physics Tasks</h2>
+                        <ul id="physics-tasks">
+                            <!-- Tasks will be added here dynamically -->
+                        </ul>
+                    </div>
+                    
+                    <div class="todo-list chemistry-tasks">
+                        <h2><i class="fas fa-flask"></i> Chemistry Tasks</h2>
+                        <ul id="chemistry-tasks">
+                            <!-- Tasks will be added here dynamically -->
+                        </ul>
+                    </div>
+                    
+                    <div class="todo-list math-tasks">
+                        <h2><i class="fas fa-square-root-alt"></i> Math Tasks</h2>
+                        <ul id="math-tasks">
+                            <!-- Tasks will be added here dynamically -->
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Community Section -->
+            <section id="community" class="content-section">
+                <h1><i class="fas fa-users"></i> Study Community (Beta)</h1>
+                
+                <div class="community-posts">
+                    <div class="post-input">
+                        <textarea id="new-post" placeholder="Ask a question or share something with the community..."></textarea>
+                        <button class="btn red-btn" id="post-btn"><i class="fas fa-paper-plane"></i> Post</button>
+                    </div>
+                    
+                    <div class="posts-list">
+                        <div class="post">
+                            <div class="post-header">
+                                <img src="https://via.placeholder.com/40" alt="User">
+                                <span class="username">JEE_Aspirant_2024</span>
+                                <span class="post-time">2 hours ago</span>
+                            </div>
+                            <div class="post-content">
+                                How do I solve problems related to relative velocity in 2D motion? Any tips?
+                            </div>
+                            <div class="post-actions">
+                                <button class="btn small-btn"><i class="fas fa-reply"></i> Reply</button>
+                                <button class="btn small-btn"><i class="fas fa-trash"></i> Delete</button>
+                            </div>
+                            
+                            <div class="replies">
+                                <div class="reply">
+                                    <div class="reply-header">
+                                        <img src="https://via.placeholder.com/30" alt="User">
+                                        <span class="username">Physics_Expert</span>
+                                    </div>
+                                    <div class="reply-content">
+                                        Always draw the vectors and use component method. Break velocities into x and y components.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- More posts will be added dynamically -->
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
